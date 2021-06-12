@@ -2,7 +2,7 @@ const express= require("express");
 const mongoose = require("mongoose");
 const bodyparser = require("body-parser");
 const { response } = require("express");
-
+const port= process.env.PORT ||8000;
 const urlencoded=bodyparser.urlencoded({extended:false});
 
 mongoose.connect('mongodb://localhost/gymbankC',{useNewUrlParser:true,useUnifiedTopology:true});
@@ -26,7 +26,7 @@ const sch2=new mongoose.Schema({
 const customers = new mongoose.model("customers",sch);
 const transictions = new mongoose.model("transictions",sch2);
 const app =express();
-const port = 5000;
+
 app.set('view engine','ejs');
 app.set('views',"./public/views")
 app.use(express.static('public'));
