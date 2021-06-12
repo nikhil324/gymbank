@@ -27,6 +27,7 @@ const customers = new mongoose.model("customers",sch);
 const transictions = new mongoose.model("transictions",sch2);
 const app =express();
 
+
 app.set('view engine','ejs');
 app.set('views',"./public/views")
 app.use(express.static('public'));
