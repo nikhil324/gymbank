@@ -1,0 +1,55 @@
+<%- include('../partials/header'); %>
+
+<style>
+  body{
+    background-color: rgb(233, 231, 229)!important;
+  }
+ #foot{
+   height:100vh;
+ } 
+  table{
+    text-align: center;
+    font-size:large;
+    font-family: 'Times New Roman', Times, serif;
+  }
+  
+  .my-custom-scrollbar {
+position: relative;
+height: 500px;
+overflow: auto;
+margin-top:40px;
+}
+.table-wrapper-scroll-y {
+display: block;
+}
+</style>
+      <div class="container">
+      <div class="table-wrapper-scroll-y my-custom-scrollbar">
+        <table class="table table-bordered table-striped mb-0">
+          <thead style="background-color: black; color:white">
+            <tr>
+              <th scope="col">FROM</th>
+              <th scope="col">TO</th>
+              <th scope="col">TRANSICTION-ID</th>
+              <th scope="col">AMOUNT</th>
+              <th scope="col">DATE</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% for(var i=0; i<transiction.length; i++) {%>
+            <tr>
+              <th scope="row"><%= transiction[i].from %></th>
+              <td><%= transiction[i].to %></td>
+              <td><%= transiction[i].transiction_id %></td>
+              <td><%= transiction[i].amount %></td>
+              <td><%= transiction[i].date %></td>
+            </tr>
+            <%}%>
+          </tbody>
+        </table>
+      </div>
+      </div>
+      </div>   
+      </body>
+  
+      <%- include("../partials/footer"); %>

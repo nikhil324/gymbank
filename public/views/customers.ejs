@@ -1,0 +1,124 @@
+<%- include('../partials/header'); %>
+
+<script>
+  const cost = ()=>{
+     const name = prompt("Verify your identity : ");
+     var inpf= document.getElementById("innertext")
+     inpf.value=name ; 
+  }
+</script>
+<style>
+   body{
+    background-color: rgb(233, 231, 229)!important;
+  }
+ #foot{
+   height:100vh;
+ } 
+  table{
+    text-align: center;
+    font-size:large;
+    font-family:  'Times New Roman', Times, serif;
+  }
+  
+  .my-custom-scrollbar {
+position: relative;
+height: 500px;
+overflow: auto;
+margin-top:40px;
+}
+.table-wrapper-scroll-y {
+display: block;
+}
+input {
+        border-top-style: hidden;
+        border-right-style: hidden;
+        border-left-style: hidden;
+        border-bottom-style: groove;
+        display:flex;
+      }
+      
+      .no-outline:focus {
+        outline: none;
+      }
+</style>
+<% if(msg!="") {%>
+<div class="alert alert-danger alert-dismissible fade show" role="alert">
+  <strong>WARNING: , <%= msg %></strong>
+  <button style="margin-left: 800px;"type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<% } %>
+      <div class="container">
+      <div class="table-wrapper-scroll-y my-custom-scrollbar">
+        <table class="table table-bordered table-striped mb-0">
+          <thead style="background-color: black; color:white">
+       
+            <tr>
+              <th scope="col">Customer-Id.</th>
+              <th scope="col">NAME</th>
+              <th scope="col">E-MAIL</th>
+              <th scope="col">CURRENT-BALANCE</th>
+              <th scope="col">TRANSICTION</th>
+            </tr>
+          </thead>
+          <tbody>
+              <% for(var i=0; i<customer.length; i++) {%>
+            
+              <tr>
+              <th scope="row"><%= customer[i]._id %></th>
+              <td id="name" ><%= customer[i].Name %></td>
+              <td><%= customer[i].Email %></td>
+              <td><%= customer[i].balance %></td>
+              <td><button onclick="cost()" type="button" data-toggle="modal" data-target="#myModal"  class="btn btn-success btn ">SEND-MONEY</button></td>
+              </tr>
+                <%}%>
+              </tbody>
+        </table>
+      </div>
+      </div>
+      </div>
+      <form action="/success" method="post">
+      <div class="modal" id="myModal">
+        <div class="modal-dialog">
+          <div class="modal-content">
+      
+            <!-- Modal Header -->
+            <div class="modal-header" style="background-color: #d0f8af;">
+              <h4 class="modal-title" style="text-align: center"><img src="../partials/images/t1.png" height="80" width="100">MONEY-TRANSICTION</h4>
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <!-- Modal body -->
+            <div class="modal-body">
+             
+              <h5 style="margin-left:30px;" name="name" >FROM :<input  type="text" name="name" id ="innertext" required/></h5>
+
+              <h6 style="margin-left:30px;" name="tid">Sender Customer-Id : <input class="no-outline" type="text" name="cid" autocomplete="off" required></h6>
+                <div class="row" style="margin-top: 40px;">
+                  <div class="col-sm">
+                    <p style="margin-left:30px;font-size:90%;">AMOUNT:</p>
+                <input style="margin-left:30px;width:50px;" class="no-outline" name="amount"  type="text" autocomplete="off" required>
+                  </div>
+                  <div class="col-sm">
+                    <img src="../partials/images/t2.gif" height="40" width="200">
+                  </div>
+                  <div class="col-sm">
+                    <p style="font-size:90%;">Reciever Email:</p>
+                    <input style="width:120px;" type="email" class="no-outline" name="email" placeholder="abc@gmail.com" autocomplete="off" required>
+                  </div>
+                </div>
+            </div>
+      
+            <!-- Modal footer -->
+            <div style="text-align: center; margin-top: 40px;margin-bottom: 20px;">
+              <img src="../partials/images/t4.png" height="50" width="50">
+              <button  type="submit" class="btn btn-success" style="padding:10px 20px 10px 20px;margin-left:10px;" >CONFIRM</button>
+            </div>
+      
+          </div>
+        </div>
+      </div>
+    </form>
+      </body>
+      
+      <%- include("../partials/footer"); %>
