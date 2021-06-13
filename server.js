@@ -5,7 +5,7 @@ const { response } = require("express");
 const port= process.env.PORT ||8000;
 const urlencoded=bodyparser.urlencoded({extended:false});
  
-const URL='mongodb+srv://Nikhilgupta:Nikhil9839@cluster0.sdkqf.mongodb.net/gymbankC?retryWrites=true&w=majority'||'mongodb://localhost/gymbankC';
+const URL='mongodb+srv://NikhilG:Nikhil123@gymbank.p0uho.mongodb.net/gymbankC?retryWrites=true&w=majority';
 
 mongoose.connect(URL,{useNewUrlParser:true,useUnifiedTopology:true});
 const sch=new mongoose.Schema({
