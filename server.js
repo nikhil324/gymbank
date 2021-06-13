@@ -4,8 +4,10 @@ const bodyparser = require("body-parser");
 const { response } = require("express");
 const port= process.env.PORT ||8000;
 const urlencoded=bodyparser.urlencoded({extended:false});
+ 
+const URL='mongodb+srv://Nikhilgupta:<Nikhil@9839>@cluster0.sdkqf.mongodb.net/gymbankC?retryWrites=true&w=majority'||'mongodb://localhost/gymbankC';
 
-mongoose.connect('mongodb://localhost/gymbankC',{useNewUrlParser:true,useUnifiedTopology:true});
+mongoose.connect(URL,{useNewUrlParser:true,useUnifiedTopology:true});
 const sch=new mongoose.Schema({
     _id:Number,
     Name:String,
